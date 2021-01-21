@@ -1,0 +1,27 @@
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // Delete once there is content
+  height: 100vh;
+  background-color: lightblue;
+}
+
+.container {
+  width: 400px;
+  display: flex;
+  justify-content: space-evenly;
+  height: 650px;
+  position: relative;
+  background-color: white;
+  border-radius: 4px;
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  position: absolute;
+  bottom: 0;
+  padding: 2rem;
+}
