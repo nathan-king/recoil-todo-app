@@ -2,11 +2,17 @@ import "./App.scss";
 import { Todos, Buttons } from "./components";
 import { ThemeProvider } from "@material-ui/styles";
 import theme from "./utils/Theme";
-import { ContextProvider } from "./context";
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from "recoil";
 
 function App() {
   return (
-    <ContextProvider>
+    <RecoilRoot>
       <ThemeProvider theme={theme}>
         <div className="App">
           <div className="container">
@@ -15,7 +21,7 @@ function App() {
           </div>
         </div>
       </ThemeProvider>
-    </ContextProvider>
+    </RecoilRoot>
   );
 }
 

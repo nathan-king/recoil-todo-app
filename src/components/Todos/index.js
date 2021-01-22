@@ -1,56 +1,48 @@
-import React, { useState, useContext, useEffect } from "react";
-import { Context } from "../../context";
+import React, { useState, useEffect } from "react";
 import styles from "./Todos.module.scss";
-import { handleAdd, sortName, sortPriority } from "../../utils/Helpers";
-
+// Import Custom Helper Functions
+import {
+  sortName,
+  sortPriority,
+  useRecoil,
+  keyListener,
+} from "../../utils/Helpers";
+// Import Global State Tools
+import { useRecoilValue as useValue } from "recoil";
+import { todoState, priorityState, entryState } from "../../state/atoms";
 // MUI Button Component
-import Button from "@material-ui/core/button";
+import Button from "../../components/Button";
 
+// Todos Component
 export default function Todos() {
-  const { context, setContext } = useContext(Context);
+  // Global State
+  const [todoList, setTodoList] = useRecoil(todoState);
+  const [show, toggleShow] = useRecoil(entryState);
+  const priority = useValue(priorityState);
+  // Local State
+  const [newTodo, setNewTodo] = useState("");
 
-  // Toggle Priority vs Name Sorting
-  const [priority, setPriority] = useState(true); // Sorting: true = priority, false = name
-  // let priority = context.priority;
-  let todos = [...context.todos];
-
+  // Sort To-do List
+  let todos = [...todoList];
   priority ? sortPriority(todos) : sortName(todos);
 
   return (
     <>
-      <div className={styles.todos}>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => setPriority(!priority)}
-        >
-          Sort by {priority ? "name" : "priority"}
-        </Button>
+      <Button />
+      {/* Dynamically render  todo items */}
 
-        {/* Dynamically render  todo items */}
-        {todos.map((todo, index) => (
-          <div key={index}>
-            {todo.title} {todo.priority}
-          </div>
-        ))}
-      </div>
+      {todos.map((todo, index) => (
+        <div key={index}>
+          {todo.title} {todo.priority}
+        </div>
+      ))}
+      {show ? (
+        <input
+          type="text"
+          name="todoTitle"
+          onChange={(e) => setNewTodo(e.target.value)}
+        ></input>
+      ) : null}
     </>
   );
-
-  // Event Handlers and Helper Functions
-
-  // function handleAdd(todo) {
-  //   setContext({
-  //     type: "add",
-  //     payload: todo,
-  //   });
-  // }
-
-  // function sortName(todos) {
-  //   todos.sort((a, b) => a.title.localeCompare(b.title));
-  // }
-
-  // function sortPriority(todos) {
-  //   todos.sort((a, b) => a.priority - b.priority);
-  // }
 }

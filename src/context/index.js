@@ -43,9 +43,15 @@ const Reducer = (state, action) => {
 };
 
 const ContextProvider = (props) => {
-  const [context, setContext] = useReducer(Reducer, initialState);
+  const [todoList, setTodoList] = useReducer(Reducer, initialState.todos);
+  const [priority, setPriority] = useReducer(Reducer, initialState.priority);
   return (
-    <Context.Provider value={{ context, setContext }}>
+    <Context.Provider
+      value={{
+        todoList: [todoList, setTodoList],
+        priority: [priority, setPriority],
+      }}
+    >
       {props.children}
     </Context.Provider>
   );
