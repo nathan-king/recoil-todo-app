@@ -1,7 +1,24 @@
 import React, { useReducer, createContext } from "react";
 
 const initialState = {
-  todos: ["Eat brekky", "Do homework", "Work out"],
+  todos: [
+    {
+      title: "Eat brekky",
+      completed: false,
+      priority: 1,
+    },
+    {
+      title: "Do homework",
+      completed: false,
+      priority: 3,
+    },
+    {
+      title: "Work out",
+      completed: false,
+      priority: 2,
+    },
+  ],
+  priority: true,
 };
 
 const actions = {

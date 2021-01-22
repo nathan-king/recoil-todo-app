@@ -2,7 +2,6 @@ import "./App.scss";
 import { Todos, Buttons } from "./components";
 import { ThemeProvider } from "@material-ui/styles";
 import theme from "./utils/Theme";
-import { useState } from "react";
 import { ContextProvider } from "./context";
 
 function App() {
