@@ -4,7 +4,13 @@
   align-items: center;
   // Delete once there is content
   min-height: 100vh;
-  background-color: darkblue;
+  background: linear-gradient(
+    45deg,
+    darkblue,
+    rgb(10, 10, 160),
+    darkblue,
+    rgb(10, 10, 160)
+  );
 }
 
 .container {
@@ -16,6 +22,9 @@
   position: relative;
   background-color: white;
   border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
+    0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
+    0 16px 16px rgba(0, 0, 0, 0.12);
 }
 
 .button-container {
