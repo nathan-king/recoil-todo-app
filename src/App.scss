@@ -4,6 +4,7 @@
   align-items: center;
   // Delete once there is content
   min-height: 100vh;
+  min-width: 100vw;
   background: linear-gradient(
     45deg,
     darkblue,
@@ -11,6 +12,7 @@
     darkblue,
     rgb(10, 10, 160)
   );
+  overflow: hidden;
 }
 
 .container {

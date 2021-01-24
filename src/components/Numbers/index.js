@@ -5,8 +5,10 @@ import styles from "./Numbers.module.scss";
 
 const Numbers = () => {
   const todoList = useValue(todoState);
+  // Obtain Total of Todos and Completed Todos
   const total = todoList.length;
   const completed = todoList.filter((x) => x.completed).length;
+
   return (
     <div className={styles.container}>
       <div className={styles.number}>Total: {total}</div>

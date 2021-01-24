@@ -1,22 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+// Global State Hooks
 import {
-  useRecoilValue as useValue,
   useRecoilState as useRecoil,
-} from "recoil"; // Custom Helper Functions
-import { todoState, changeState, priorityState } from "../../state/atoms"; //Global State
+  useSetRecoilState as useSetState,
+} from "recoil";
+// Global State
+import { todoState, changeState } from "../../state/atoms";
+// Icons and Styles
 import AddIcon from "@material-ui/icons/Add";
 import styles from "../TodoForm/TodoForm.module.scss";
+// Custom Helper
 import { replaceItemAtIndex } from "../../utils/Helpers";
 
 const EditForm = ({ item }) => {
+  // Global State Hooks
   const [todoList, setTodoList] = useRecoil(todoState);
-  const [priorityOrder, setPriority] = useRecoil(priorityState);
-  const [changing, setChanging] = useRecoil(changeState);
+  const setChanging = useSetState(changeState);
+  // Local State
   const [newTodo, setNewTodo] = useState({
     title: item.title,
     completed: item.completed,
     priority: item.priority,
   });
+
   const index = todoList.findIndex((listItem) => listItem === item);
 
   const changeTitle = (e) => {
@@ -30,28 +36,12 @@ const EditForm = ({ item }) => {
   const changePriority = (e) => {
     setNewTodo({
       ...newTodo,
-      priority: +e.target.value,
+      priority: +e.target.value, //Change value to number
     });
   };
 
-  const sortItems = () => {
-    if (priorityOrder) {
-      setTodoList(
-        todoList.slice().sort(function (a, b) {
-          return a.priority - b.priority; // By priority
-        })
-      );
-    } else {
-      setTodoList(
-        todoList.slice().sort(function (a, b) {
-          return a.title.localeCompare(b.title); // By name
-        })
-      );
-    }
-  };
-
   const updateItem = () => {
-    const { title, completed, priority } = newTodo;
+    const { title, priority } = newTodo;
     const newList = replaceItemAtIndex(todoList, index, {
       ...item,
       title,

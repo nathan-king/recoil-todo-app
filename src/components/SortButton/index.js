@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
-import MuiButton from "@material-ui/core/Button";
+import React from "react";
 import { priorityState } from "../../state/atoms";
-import { useRecoil } from "../../utils/Helpers";
+import { useRecoilState as useRecoil } from "recoil";
 import styles from "./SortButton.module.scss";
 
 export default function Button() {

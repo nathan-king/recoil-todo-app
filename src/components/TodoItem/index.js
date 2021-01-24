@@ -1,17 +1,25 @@
 import React from "react";
+// Global State
 import { useRecoilState as useRecoil } from "recoil";
 import { todoState, changeState, removeState } from "state/atoms";
-import EditForm from "../EditForm";
-import styles from "./TodoItem.module.scss";
+// Icons
 import LowIcon from "@material-ui/icons/StarOutline";
 import MidIcon from "@material-ui/icons/StarHalf";
 import HighIcon from "@material-ui/icons/Star";
+// Helper Functions
 import { removeItemAtIndex, replaceItemAtIndex } from "../../utils/Helpers";
+// Components and Styles
+import EditForm from "../EditForm";
+import styles from "./TodoItem.module.scss";
 
+// COMPONENT BODY
 const TodoItem = ({ item }) => {
+  // Global State Hooks
   const [todoList, setTodoList] = useRecoil(todoState);
-  const [changing, toggleChanging] = useRecoil(changeState);
+  const [changing] = useRecoil(changeState);
   const [removing, toggleRemoving] = useRecoil(removeState);
+
+  // TodoList Modification Functions
   const index = todoList.findIndex((listItem) => listItem === item);
 
   const toggleCompleted = () => {
@@ -36,6 +44,7 @@ const TodoItem = ({ item }) => {
         <div
           className={`${styles.item} ${removing ? styles.removing : null}`}
           onClick={removing ? deleteItem : toggleCompleted}
+          // Click to delete item if delete mode, otherwise removetoggle completed property
         >
           <div
             className={`${styles.text} ${

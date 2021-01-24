@@ -1,29 +1,32 @@
 import React, { useEffect } from "react";
+// Global State Hooks
 import {
   useRecoilValue as useValue,
   useRecoilState as useRecoil,
-} from "recoil"; // Global State Hooks
-import styles from "./Todos.module.scss";
+} from "recoil";
+//Global State
 import {
   todoState,
   priorityState,
   addState,
   changeState,
   removeState,
-} from "../../state/atoms"; //Global State
+} from "../../state/atoms";
+import styles from "./Todos.module.scss";
+// Components
 import TodoItem from "../TodoItem";
 import TodoForm from "../TodoForm";
 
-// TODOS
+// COMPONENT BODY
 export default function Todos() {
-  // GLOBAL STATE
+  // Global State Hooks
   const [todoList, setTodoList] = useRecoil(todoState);
   const changing = useValue(changeState);
   const show = useValue(addState);
   const removing = useValue(removeState);
   const priority = useValue(priorityState);
 
-  // Sort according to priotiy or name when priority changes
+  // Sort TodoList
   useEffect(() => {
     if (priority) {
       setTodoList(
@@ -38,7 +41,8 @@ export default function Todos() {
         })
       );
     }
-  }, [priority, changing, show, removing]); // watches priority for sortButton, changing for item edits, show for item additions, removing etc.
+    // Watches priority for sortButton, and editing, adding and deleting modes etc.
+  }, [priority, changing, show, removing]);
 
   return (
     <div className={styles.todos}>
@@ -48,7 +52,7 @@ export default function Todos() {
           <TodoItem key={index} item={todo} />
         </span>
       ))}
-      {/* Todo Form */}
+      {/* Todo Form only appears in adding mode */}
       {show ? <TodoForm /> : null}
     </div>
   );

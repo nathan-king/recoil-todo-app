@@ -1,24 +1,24 @@
 import React from "react";
-import {
-  useRecoilValue as useValue,
-  useRecoilState as useRecoil,
-} from "recoil"; // Global State Hooks
-import Fab from "@material-ui/core/Fab";
+// Global State
+import { useRecoilState as useRecoil } from "recoil";
+import { addState, changeState, removeState } from "../../state/atoms";
+// Icons and Styles
 import AddIcon from "@material-ui/icons/Add";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { addState, changeState, removeState } from "../../state/atoms";
 import styles from "./Buttons.module.scss";
 
+//Component Body
 export default function Buttons() {
+  // Global State Hooks
   const [show, toggleShow] = useRecoil(addState);
   const [changing, toggleChanging] = useRecoil(changeState);
   const [removing, toggleRemoving] = useRecoil(removeState);
 
-  // Ensure that other modes are disabled when one is enabled
-
+  // Mode Handlers
   const addHandler = () => {
     toggleShow(!show);
+    // Ensure that other modes are disabled when one is enabled
     toggleChanging(show && changing ? !changing : false);
     toggleRemoving(show && removing ? !removing : false);
   };
