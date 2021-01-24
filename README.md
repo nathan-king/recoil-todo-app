@@ -1,6 +1,13 @@
 # Recoil To-do List App
 
-This application uses Recoil for Global State management
+## Instructions
+
+- Click item to mark it as complete
+- Click add button to add items
+- Click pencil button to edit items
+- Click trash button to remove item
+- Blue shading indicates edit mode
+- Red shading indicates delete mode
 
 ## Tools
 
