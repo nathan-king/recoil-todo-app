@@ -1,0 +1,41 @@
+.form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.textContainer {
+  padding: 1rem;
+  display: inline-block;
+  justify-content: center;
+  border-bottom: 1px solid blue;
+  margin: 1rem 1rem 0 1rem;
+  flex-grow: 3;
+  background-color: cyan;
+
+  .text {
+    background-color: none;
+    width: 100%;
+    background-color: inherit;
+    outline: none;
+    border: none;
+    flex-grow: 3;
+  }
+}
+
+.priority {
+  // flex-grow: 2;
+  border: none;
+  border-bottom: 1px solid blue;
+  outline: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.button {
+  width: 4rem;
+  border: none;
+  cursor: pointer;
+  background-color: inherit;
+  color: forestgreen;
+}

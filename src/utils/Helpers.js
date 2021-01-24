@@ -1,21 +1,23 @@
-import { useContext } from "react";
+import { useState, useReducer } from "react";
 import { Context } from "../context";
 import {
   useRecoilValue as useValue,
   useSetRecoilState as useSetState,
 } from "recoil";
 
+export function replaceItemAtIndex(arr, index, newValue) {
+  return [...arr.slice(0, index), newValue, ...arr.slice(index + 1)];
+}
+
+export function removeItemAtIndex(arr, index) {
+  return arr.filter(function (value, arrIndex) {
+    return index !== arrIndex;
+  });
+}
+
 // This simplifies components where state will be both read and set
 export function useRecoil(atom) {
   return [useValue(atom), useSetState(atom)];
-}
-
-export function sortName(todos) {
-  todos.sort((a, b) => a.title.localeCompare(b.title));
-}
-
-export function sortPriority(todos) {
-  todos.sort((a, b) => a.priority - b.priority);
 }
 
 export function keyListener(callback) {

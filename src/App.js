@@ -1,5 +1,5 @@
 import "./App.scss";
-import { Todos, Buttons } from "./components";
+import { Todos, Buttons, SortButton, Numbers } from "./components";
 import { ThemeProvider } from "@material-ui/styles";
 import theme from "./utils/Theme";
 import {
@@ -16,6 +16,8 @@ function App() {
       <ThemeProvider theme={theme}>
         <div className="App">
           <div className="container">
+            <SortButton />
+            <Numbers />
             <Todos />
             <Buttons />
           </div>

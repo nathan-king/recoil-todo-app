@@ -1,0 +1,46 @@
+// .red {
+//   color: darkred;
+//   font-weight: 900;
+// }
+
+// .green {
+//   color: darkgreen;
+//   font-weight: 700;
+// }
+
+// .blue {
+//   color: darkblue;
+//   font-weight: 500;
+// }
+
+.item {
+  padding: 1rem;
+  margin: 1rem;
+  border-bottom: solid 1px blue;
+  cursor: pointer;
+}
+
+.text {
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.completed {
+  color: gray;
+  text-decoration: line-through;
+}
+
+.removing {
+  background-color: pink;
+  color: red;
+
+  &:hover {
+    background-color: red;
+    color: pink;
+  }
+}
+
+.star {
+  color: goldenrod;
+}

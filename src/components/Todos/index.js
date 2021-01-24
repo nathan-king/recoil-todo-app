@@ -1,48 +1,55 @@
-import React, { useState, useEffect } from "react";
-import styles from "./Todos.module.scss";
-// Import Custom Helper Functions
+import React, { useEffect } from "react";
 import {
-  sortName,
-  sortPriority,
-  useRecoil,
-  keyListener,
-} from "../../utils/Helpers";
-// Import Global State Tools
-import { useRecoilValue as useValue } from "recoil";
-import { todoState, priorityState, entryState } from "../../state/atoms";
-// MUI Button Component
-import Button from "../../components/Button";
+  useRecoilValue as useValue,
+  useRecoilState as useRecoil,
+} from "recoil"; // Global State Hooks
+import styles from "./Todos.module.scss";
+import {
+  todoState,
+  priorityState,
+  addState,
+  changeState,
+  removeState,
+} from "../../state/atoms"; //Global State
+import TodoItem from "../TodoItem";
+import TodoForm from "../TodoForm";
 
-// Todos Component
+// TODOS
 export default function Todos() {
-  // Global State
+  // GLOBAL STATE
   const [todoList, setTodoList] = useRecoil(todoState);
-  const [show, toggleShow] = useRecoil(entryState);
+  const changing = useValue(changeState);
+  const show = useValue(addState);
+  const removing = useValue(removeState);
   const priority = useValue(priorityState);
-  // Local State
-  const [newTodo, setNewTodo] = useState("");
 
-  // Sort To-do List
-  let todos = [...todoList];
-  priority ? sortPriority(todos) : sortName(todos);
+  // Sort according to priotiy or name when priority changes
+  useEffect(() => {
+    if (priority) {
+      setTodoList(
+        todoList.slice().sort(function (a, b) {
+          return a.priority - b.priority; // By priority
+        })
+      );
+    } else {
+      setTodoList(
+        todoList.slice().sort(function (a, b) {
+          return a.title.localeCompare(b.title); // By name
+        })
+      );
+    }
+  }, [priority, changing, show, removing]); // watches priority for sortButton, changing for item edits, show for item additions, removing etc.
 
   return (
-    <>
-      <Button />
+    <div className={styles.todos}>
       {/* Dynamically render  todo items */}
-
-      {todos.map((todo, index) => (
-        <div key={index}>
-          {todo.title} {todo.priority}
-        </div>
+      {todoList.map((todo, index) => (
+        <span key={todo.id} className={styles.todoItem}>
+          <TodoItem key={index} item={todo} />
+        </span>
       ))}
-      {show ? (
-        <input
-          type="text"
-          name="todoTitle"
-          onChange={(e) => setNewTodo(e.target.value)}
-        ></input>
-      ) : null}
-    </>
+      {/* Todo Form */}
+      {show ? <TodoForm /> : null}
+    </div>
   );
 }
