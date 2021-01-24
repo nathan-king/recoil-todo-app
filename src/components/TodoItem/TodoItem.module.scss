@@ -29,6 +29,11 @@
 .completed {
   color: gray;
   text-decoration: line-through;
+  background-color: lightgray;
+
+  svg {
+    color: dakrgray;
+  }
 }
 
 .removing {

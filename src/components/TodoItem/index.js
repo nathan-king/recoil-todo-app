@@ -42,17 +42,17 @@ const TodoItem = ({ item }) => {
         <EditForm item={item} key={item.id} />
       ) : (
         <div
-          className={`${styles.item} ${removing ? styles.removing : null}`}
+          className={`${styles.item} ${removing ? styles.removing : null}  ${
+            item.completed ? styles.completed : null
+          }`}
           onClick={removing ? deleteItem : toggleCompleted}
           // Click to delete item if delete mode, otherwise removetoggle completed property
         >
-          <div
-            className={`${styles.text} ${
-              item.completed ? styles.completed : null
-            } `}
-          >
+          <div className={`${styles.text} `}>
             <div>{item.title}</div>
-            <div className={styles.star}>
+            <div
+              className={` ${item.completed ? styles.completed : styles.star}`}
+            >
               {item.priority === 1 ? (
                 <HighIcon />
               ) : item.priority === 2 ? (
