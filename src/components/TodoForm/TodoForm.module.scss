@@ -2,7 +2,11 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  height: auto;
+  opacity: 1;
   margin-bottom: 0.5rem;
+  transition: all .5s;
+
 }
 
 .textContainer {
@@ -12,7 +16,7 @@
   border-bottom: 1px solid blue;
   margin: 1rem 1rem 0 1rem;
   flex-grow: 3;
-  background-color: cyan;
+  background-color: #c3e6fc;
 
 
   .text {
@@ -46,4 +50,15 @@
   cursor: pointer;
   background-color: inherit;
   color: forestgreen;
+}
+
+.notShow {
+    height: 0px;
+    opacity: 0;
+ 
+    width: 0px;
+    
+    & > * {
+      display: none;
+  }
 }

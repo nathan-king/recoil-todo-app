@@ -51,7 +51,7 @@ const TodoItem = ({ item }) => {
             <div
               className={` ${item.completed ? styles.completed : styles.star}`}
             >
-                  <div className={`${item.priority === 1 ? styles.gold : item.priority === 2 ? styles.silver : styles.bronze}`}>
+                  <div className={item.priority === 1 ? styles.gold : item.priority === 2 ? styles.silver : styles.bronze}>
                     <Star />
                   </div>
 

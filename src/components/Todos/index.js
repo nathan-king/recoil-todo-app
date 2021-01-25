@@ -53,7 +53,8 @@ export default function Todos() {
         </span>
       ))}
       {/* Todo Form only appears in adding mode */}
-      {show ? <TodoForm /> : null}
+      <TodoForm />
+      {/* {show ? <TodoForm /> : null} */}
     </div>
   );
 }
