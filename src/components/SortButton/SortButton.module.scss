@@ -11,8 +11,8 @@
   padding: 1.5rem;
   border: none;
   outline: none;
-  color: darkblue;
-  background-color: inherit;
+  color: white;
+  background-color: darkblue;
   transition: all 0.1s;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 2px 2px rgba(0, 0, 0, 0.15),
     0 4px 4px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.15);
@@ -22,6 +22,6 @@
     cursor: pointer;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.33), 0 2px 2px rgba(0, 0, 0, 0.33),
       0 3px 3px rgba(0, 0, 0, 0.33);
-    color: black;
+    background-color: darkblue;
   }
 }
