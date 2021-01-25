@@ -3,9 +3,7 @@ import React from "react";
 import { useRecoilState as useRecoil } from "recoil";
 import { todoState, changeState, removeState } from "state/atoms";
 // Icons
-import LowIcon from "@material-ui/icons/StarOutline";
-import MidIcon from "@material-ui/icons/StarHalf";
-import HighIcon from "@material-ui/icons/Star";
+import Star from "@material-ui/icons/Star";
 // Helper Functions
 import { removeItemAtIndex, replaceItemAtIndex } from "../../utils/Helpers";
 // Components and Styles
@@ -53,13 +51,10 @@ const TodoItem = ({ item }) => {
             <div
               className={` ${item.completed ? styles.completed : styles.star}`}
             >
-              {item.priority === 1 ? (
-                <HighIcon />
-              ) : item.priority === 2 ? (
-                <MidIcon />
-              ) : (
-                <LowIcon />
-              )}
+                  <div className={`${item.priority === 1 ? styles.gold : item.priority === 2 ? styles.silver : styles.bronze}`}>
+                    <Star />
+                  </div>
+
             </div>
           </div>
         </div>

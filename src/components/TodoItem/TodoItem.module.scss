@@ -1,17 +1,18 @@
-// .red {
-//   color: darkred;
-//   font-weight: 900;
-// }
+$gold: goldenrod;
+$silver: #c0c0c0;
+$bronze: #cd7f32;
 
-// .green {
-//   color: darkgreen;
-//   font-weight: 700;
-// }
+.gold {
+    color: $gold;
+}
 
-// .blue {
-//   color: darkblue;
-//   font-weight: 500;
-// }
+.silver {
+    color: $silver;
+}
+
+.bronze {
+    color: $bronze;
+}
 
 .item {
   padding: 1rem;
@@ -44,8 +45,4 @@
     background-color: red;
     color: pink;
   }
-}
-
-.star {
-  color: goldenrod;
 }
