@@ -40,7 +40,7 @@ const TodoForm = ({ title }) => {
 
   return (
     <div className={styles.form} noValidate autoComplete="off">
-      <div className={styles.textContainer}>
+      <div className={`${styles.textContainer} ${styles.green}`}>
         <input
           type="text"
           className={styles.text}
