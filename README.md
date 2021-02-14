@@ -25,6 +25,10 @@
 - View the tasks sorted by priority and name
 - View the number of total and completed tasks
 
+## Goal
+
+To practice using Recoil for global state management
+
 ## Deployed
 
 Deployed on [Vercel](https://recoil-todo-app.vercel.app/)
