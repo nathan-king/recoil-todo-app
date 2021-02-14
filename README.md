@@ -28,5 +28,6 @@
 ## Deployed
 
 Deployed on [Vercel](https://recoil-todo-app.vercel.app/)
+__________________
 
 Created by Nathan King 24-01-2020
