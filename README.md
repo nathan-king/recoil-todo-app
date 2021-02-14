@@ -25,4 +25,8 @@
 - View the tasks sorted by priority and name
 - View the number of total and completed tasks
 
+## Deployed
+
+Deployed on [Vercel](https://recoil-todo-app.vercel.app/)
+
 Created by Nathan King 24-01-2020
